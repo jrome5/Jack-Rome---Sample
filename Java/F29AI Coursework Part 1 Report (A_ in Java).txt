@@ -1,0 +1,47 @@
+﻿F29AI Coursework Part 1 Report (A* in Java)
+Sean Katagiri/H00230479 Jack Rome/H00219766 Shayne Shaw/H00214626
+ 
+Classes
+ 
+There are 4 classes used in the implementation of the A* algorithm.  “A”, “WareHouse”, “NodeTree” and “CostCompare”. 
+ 
+1)     Class WareHouse
+This is a simple class which creates an object of type WareHouse which takes 3 integer values as arguments. One for each of the box sizes which are to be moved between the warehouses and the truck, small, medium and large.  It also has methods to add, remove and return each of these values.
+ 
+2)     Class A
+This class has three instances of the warehouse class and is where the A* algorithm, heuristics and goal states are implemented.
+·       h – a heuristic method which uses the total number of boxes to extimate the number of moves to the goal state.
+·       exploreNode – this method takes the values held in the parent node (S,M,L  and location) and uses them to calculate the values of the 2 potential children.  It also implements a penalty cost if the algorithm moves between two warehouses without transferring a box. 
+·       checkGoal – this method holds the goal state and checks the current values of each warehouse against this.  When it returns true the A* will stop searching. Returns true or false.
+·       Astar – this method implements the A* search algorithm and prints out each node that it explores as it iterates through the tree. Returns the final solution as a list of nodes.
+·       generateNodes – looks at the current node and generates 2 children.  If the current node is T then it will generate A and B.  The cost and data for each of these children are then set by exploreNode.
+·           main method – initializes the root node, in this case T (truck) and prints out the goal path once the goal state has been reached.
+ 
+3)     Class costCompare
+This class orders the fringe nodes into a priority queue based on their cost.
+ 
+4)     Class NodeTree
+This class creates each node and stores the relevant state values within each.
+ 
+ 
+ 
+ 
+ 
+ 
+Challenges
+ 
+The main difficulties with this part of the assignment came with how to create the state space and represent this in a format which A* was capable of searching.  In the end the state space consisted of 3 warehouse objects (truck, A and B).  A node tree was then used to represent the possible movements between each state.  It was decided that a tree was a more appropriate data structure than a graph in this case as the state space only consisted of 3 possible locations (1 parent and 2 children in all cases).
+ 
+The A* algorithm itself proved difficult implement as so many variants were found during the initial research but none of them worked well in our code.  Eventually the A* algorithm was written using the pseudo code example in the lecture slides.
+
+
+Once it was decided that a tree was the data structure of choice a static tree was then hard coded in order to test the A* algorithm.  While this solution worked the number of nodes to be coded increased exponentially for each transition.  The solution was to create a self-generating tree. The generateNodes method was created to fulfil this purpose.
+
+
+Difficulties then arose while trying to establish a relationship between the parent and child nodes for each transition.  This was solved by the exploreNode method described earlier.
+ 
+ 
+Improvements
+ 
+The heuristics while effective could definitely be improved especially for very large values where their influence will be greater on the effectiveness of the algorithm.
+Currently the values for each warehouse need to be manually set in the “A” class.  Ideally the program would be able to take input from the user and use this as the initial values for each warehouse.
