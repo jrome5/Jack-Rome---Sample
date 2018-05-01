@@ -1,0 +1,9 @@
+Problem description
+A robot must load and unload packages into and out of a delivery truck. Packages unloaded from the
+delivery truck must be brought to the appropriate warehouse. Small packages must go to Warehouse A and
+large packages must go to Warehouse B. Medium packages, which are initially stored in either Warehouse A
+or Warehouse B, must be loaded onto the delivery truck. The truck initially contains S small packages and L
+large packages. Warehouse A initially contains Ma medium packages and Warehouse B initially contains Mb
+medium packages. Assume that both warehouses are adjacent to the truck and that the robot can freely
+move between the truck and the warehouses. The robot can only move one package at a time, regardless of
+size, from one location to another.
